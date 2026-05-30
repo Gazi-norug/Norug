@@ -4,33 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>NORUG | Håndlagde Tepper</title>
+    <title>NORUG | Premium Håndlagde Tepper</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* GENEL AYARLAR VE RENK PALETİ */
+        /* OVERUG.CO STİLİ: MİNİMALİST, MODERN VE LÜKS TASARIM AYARLARI */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             scroll-behavior: smooth;
         }
         body {
-            background-color: #fcfbf9;
-            color: #333;
+            background-color: #ffffff;
+            color: #111111;
             line-height: 1.6;
         }
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1250px;
             margin: 0 auto;
         }
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
 
-        /* HEADER & NAVIGASJON */
+        /* PREMIUM HEADER */
         header {
             background-color: #ffffff;
-            padding: 15px 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e5e5;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -40,45 +46,77 @@
             justify-content: space-between;
             align-items: center;
         }
-        /* 2. MADDE: Logo alanı ayarları */
         .logo-area img {
-            height: 45px; 
+            height: 40px; /* DÜZENLENEBİLİR ALAN: Logo yüksekliği */
             width: auto;
             display: block;
         }
         nav {
             display: flex;
             align-items: center;
+            gap: 25px;
         }
         nav a {
-            text-decoration: none;
-            color: #444;
-            margin-left: 20px;
-            font-weight: 600;
-            transition: color 0.3s;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+            transition: opacity 0.3s;
         }
         nav a:hover {
-            color: #b8926a;
+            opacity: 0.6;
         }
         
-        /* 3. MADDE: Sağ üst köşedeki dinamik sepet butonu */
-        .cart-icon-btn {
+        /* 4. MADDE: SAĞ ÜST İKONLAR (ARAMA, FAVORİ, SEPET) */
+        .header-utilities {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .search-input {
+            padding: 6px 12px 6px 30px;
+            border: 1px solid #e5e5e5;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            outline: none;
+            width: 180px;
+            transition: all 0.3s;
+        }
+        .search-input:focus {
+            border-color: #111;
+            width: 220px;
+        }
+        .search-container i {
+            position: absolute;
+            left: 10px;
+            color: #999;
+            font-size: 0.85rem;
+        }
+        .utility-btn {
             background: none;
             border: none;
-            position: relative;
             cursor: pointer;
-            font-size: 1.2rem;
-            margin-left: 20px;
+            font-size: 1.1rem;
+            position: relative;
+            transition: transform 0.2s;
         }
-        .cart-badge {
+        .utility-btn:hover {
+            transform: scale(1.1);
+        }
+        .badge {
             position: absolute;
-            top: -10px;
-            right: -10px;
-            background-color: #b8926a;
+            top: -8px;
+            right: -8px;
+            background-color: #111111;
             color: white;
-            font-size: 0.75rem;
-            width: 18px;
-            height: 18px;
+            font-size: 0.65rem;
+            width: 16px;
+            height: 16px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -86,93 +124,157 @@
             font-weight: bold;
         }
 
-        /* HERO ALANI (Horten, Norge) */
+        /* HERO GİRİŞ ALANI */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1200') center/cover no-repeat;
-            padding: 50px 0;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=1200') center/cover no-repeat;
+            padding: 80px 0;
             text-align: center;
             color: white;
         }
         .hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 5px;
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 1rem;
+            text-transform: uppercase;
             letter-spacing: 2px;
+            font-weight: 300;
         }
 
-        /* 6. MADDE: HAKKIMIZDA (OM OSS) BÖLÜMÜ */
+        /* HAKKIMIZDA (OM OSS) */
         .about-section {
-            padding: 40px 0;
+            padding: 60px 0;
             text-align: center;
-            background-color: #ffffff;
-            border-bottom: 1px solid #f0ede9;
+            background-color: #fbfbfb;
+            border-bottom: 1px solid #e5e5e5;
+        }
+        .about-section h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
         }
         .about-content {
-            max-width: 700px;
+            max-width: 800px;
             margin: 0 auto;
-            color: #666;
+            color: #555;
+            font-size: 0.95rem;
         }
 
-        /* 1. MADDE: KATEGORİ SEÇİM ALANI (TABS) */
+        /* 1 & 2. MADDE: ÜRÜNLER & KATEGORİLER (Baskı halı yok) */
+        .main-content {
+            padding: 60px 0;
+        }
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 15px;
+        }
+        .section-header h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
         .category-tabs {
             display: flex;
-            justify-content: center;
             gap: 15px;
-            margin: 30px 0;
         }
         .tab-btn {
-            background-color: #eee;
-            border: none;
-            padding: 10px 20px;
-            font-weight: 600;
-            border-radius: 20px;
+            background: none;
+            border: 1px solid #e5e5e5;
+            padding: 8px 18px;
+            font-weight: 500;
+            font-size: 0.8rem;
+            text-transform: uppercase;
             cursor: pointer;
             transition: all 0.3s;
         }
         .tab-btn.active, .tab-btn:hover {
-            background-color: #b8926a;
-            color: white;
+            background-color: #111111;
+            color: #ffffff;
+            border-color: #111111;
         }
 
-        /* ÜRÜN KARTLARI GRİDİ */
-        .main-content {
-            padding: 20px 0 50px 0;
-        }
+        /* ÜRÜN KARTLARI GRİD YAPISI (OVERUG TARZI) */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
         .product-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            cursor: pointer;
-            transition: transform 0.3s;
+            background: #ffffff;
             position: relative;
+            cursor: pointer;
         }
-        .product-card:hover {
-            transform: translateY(-5px);
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            background-color: #f5f5f5;
         }
         .product-image {
-            height: 250px;
+            height: 350px;
             background-size: cover;
             background-position: center;
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image {
+            transform: scale(1.04);
+        }
+        /* Favori Kalp İkonu (Kart Üstünde) */
+        .favorite-heart-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 5;
+            transition: all 0.2s;
+        }
+        .favorite-heart-btn i {
+            color: #ccc;
+            font-size: 1rem;
+        }
+        .favorite-heart-btn.active i {
+            color: #eb4d4b;
         }
         .product-info {
-            padding: 20px;
+            padding: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .product-info h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .product-price {
-            color: #b8926a;
-            font-weight: bold;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #444;
         }
 
-        /* 2. MADDE: DETAYLI ÜRÜN PENCERESİ (MODAL) */
+        /* DETAYLI ÜRÜN PENCERESİ (MODAL) */
         .modal {
             display: none; 
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.6);
             z-index: 1000;
             justify-content: center;
             align-items: center;
@@ -181,12 +283,10 @@
         .modal-content {
             background-color: white;
             width: 100%;
-            max-width: 850px;
-            border-radius: 12px;
+            max-width: 900px;
             position: relative;
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            overflow: hidden;
+            grid-template-columns: 1.1fr 0.9fr;
         }
         @media (max-width: 768px) {
             .modal-content { grid-template-columns: 1fr; max-height: 90vh; overflow-y: auto; }
@@ -194,457 +294,20 @@
         .close-modal {
             position: absolute;
             top: 15px; right: 20px;
-            font-size: 2rem;
+            font-size: 1.5rem;
             cursor: pointer;
             z-index: 10;
         }
         .modal-media {
-            padding: 20px;
-            background-color: #f9f9f9;
+            padding: 30px;
+            background-color: #fafafa;
+            border-right: 1px solid #eee;
         }
         .modal-main-img {
-            width: 100%; height: 250px; object-fit: cover; border-radius: 6px; margin-bottom: 15px;
+            width: 100%; height: 320px; object-fit: cover; margin-bottom: 20px;
         }
         .video-box {
-            background-color: #222; color: #fff; height: 120px;
+            background-color: #111; color: #fff; height: 100px;
             display: flex; align-items: center; justify-content: center;
-            border-radius: 6px; font-size: 0.85rem; text-align: center; padding: 10px;
-        }
-        .modal-details {
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        /* Başlık başlık açıklamalar için listeleme stili */
-        .specs-list {
-            margin: 15px 0;
-            list-style: none;
-        }
-        .specs-list li {
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-        .specs-list strong {
-            color: #b8926a;
-        }
-        .btn-add-to-cart {
-            background-color: #28a745;
-            color: white; border: none; padding: 12px;
-            font-size: 1rem; font-weight: bold; border-radius: 6px;
-            cursor: pointer; width: 100%;
-        }
-
-        /* 3, 5 & 7. MADDE: SEPET VE ADIM ADIM SİPARİŞ (BESTILLING) ALANI */
-        .checkout-section {
-            background-color: #ffffff;
-            padding: 50px 0;
-            border-top: 1px solid #f0ede9;
-        }
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
-        }
-        .checkout-container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: #fcfbf9;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-        }
-        .cart-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 0;
-            border-bottom: 1px solid #eee;
-        }
-        .cart-total {
-            text-align: right;
-            font-size: 1.2rem;
-            font-weight: bold;
-            margin: 20px 0;
-        }
-        .order-step {
-            display: none; /* Adımlar JS ile sırayla açılacak */
-            margin-top: 20px;
-        }
-        .order-step.active {
-            display: block;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 600;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;
-        }
-        .btn-next {
-            background-color: #b8926a;
-            color: white; border: none; padding: 12px 25px;
-            border-radius: 4px; cursor: pointer; font-weight: bold;
-        }
-        /* 7. MADDE: Vipps Bilgi Ekranı Tasarımı */
-        .vipps-box {
-            background-color: #fffaea;
-            border: 2px dashed #ffcc00;
-            padding: 20px;
-            border-radius: 6px;
-            margin-top: 15px;
-        }
-
-        /* 9. MADDE: KONTAKT (İLETİŞİM) BÖLÜMÜ */
-        .contact-section {
-            background-color: #f3f0ec;
-            padding: 50px 0;
-        }
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 30px;
-            border-radius: 8px;
-        }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="container header-container">
-            <div class="logo-area">
-                <img src="logo.png" alt="NORUG Logo">
-            </div>
-            <nav>
-                <a href="#om-oss">Om Oss</a>
-                <a href="#tepper">Tepper</a>
-                <a href="#bestilling">Bestilling</a>
-                <a href="#kontakt">Kontakt</a>
-                <button class="cart-icon-btn" onclick="scrollToSection('bestilling')">
-                    🛒 <span class="cart-badge" id="cartBadge">0</span>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <section class="hero">
-        <div class="container">
-            <h1>NORUG</h1>
-            <p>Eksklusive håndlagde tepper | Horten, Norge</p>
-        </div>
-    </section>
-
-    <section class="about-section" id="om-oss">
-        <div class="container">
-            <h2 style="margin-bottom: 15px;">Om Oss</h2>
-            <div class="about-content">
-                <p>Velkommen til NORUG. Vi tilbyr unike, håndlagde tepper av høyeste kvalitet, nøye utvalgt for det moderne hjemmet. Basert i Horten, Norge, bringer vi tradisjonelt håndverk og tidløs design sammen.</p>
-            </div>
-        </div>
-    </section>
-
-    <main class="container main-content" id="tepper">
-        <h2 class="section-title" style="margin-bottom:10px;">Våre Samlinger</h2>
-        
-        <div class="category-tabs">
-            <button class="tab-btn active" onclick="filterCategory('alle')">Alle Tepper</button>
-            <button class="tab-btn" onclick="filterCategory('Geometrisk')">Geometrisk</button>
-            <button class="tab-btn" onclick="filterCategory('Modern')">Modern</button>
-        </div>
-        
-        <div class="products-grid" id="productsGrid">
-            
-            <div class="product-card" data-category="Geometrisk" onclick="openModal(this)"
-                 data-title="Geometrisk Ullteppe"
-                 data-price="4500"
-                 data-img="https://images.unsplash.com/photo-1576016770956-debb63d900ee?q=80&w=500"
-                 data-mat="100% Naturlig Ull"
-                 data-size="160x230 cm"
-                 data-origin="Håndlaget"
-                 data-video="Video: Detaljert visning av veving og frynser kommer snart.">
-                
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576016770956-debb63d900ee?q=80&w=500');"></div>
-                <div class="product-info">
-                    <h3>Geometrisk Ullteppe</h3>
-                    <p class="product-price">4 500 kr</p>
-                </div>
-            </div>
-
-            <div class="product-card" data-category="Modern" onclick="openModal(this)"
-                 data-title="Klassisk Modern Linje"
-                 data-price="5200"
-                 data-img="https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=500"
-                 data-mat="Premium Lin & Bomull"
-                 data-size="200x300 cm"
-                 data-origin="Håndlaget design"
-                 data-video="Video: Se hvordan det moderne mønsteret reflekterer lyset.">
-                
-                <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=500');"></div>
-                <div class="product-info">
-                    <h3>Klassisk Modern Linje</h3>
-                    <p class="product-price">5 200 kr</p>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <div id="productModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeModal()">&times;</span>
-            
-            <div class="modal-media">
-                <img id="modalImg" src="" class="modal-main-img">
-                <div id="modalVideo" class="video-box">Videoområde</div>
-            </div>
-            
-            <div class="modal-details">
-                <div>
-                    <h2 id="modalTitle"></h2>
-                    <p id="modalPrice" style="font-size:1.4rem; font-weight:bold; color:#b8926a; margin: 10px 0;"></p>
-                    
-                    <ul class="specs-list">
-                        <li><strong>Materiale:</strong> <span id="specMat"></span></li>
-                        <li><strong>Størrelse:</strong> <span id="specSize"></span></li>
-                        <li><strong>Opprinnelse:</strong> <span id="specOrigin"></span></li>
-                    </ul>
-                </div>
-                
-                <button class="btn-add-to-cart" id="modalAddToCartBtn">Legg i handlekurv</button>
-            </div>
-        </div>
-    </div>
-
-    <section class="checkout-section" id="bestilling">
-        <div class="container">
-            <h2 class="section-title">Bestilling</h2>
-            
-            <div class="checkout-container">
-                <div id="step-cart" class="order-step active">
-                    <h3 style="margin-bottom:15px;">Din Handlekurv (Din Sepetiniz)</h3>
-                    <div id="cartItemsContainer">
-                        </div>
-                    <div class="cart-total" id="cartTotalArea">Totalt: 0 kr</div>
-                    <button class="btn-next" id="goToAddressBtn" onclick="nextStep(2)" style="display:none; width:100%;">Gå til leveringsadresse (Adrese İlerle)</button>
-                </div>
-
-                <div id="step-address" class="order-step">
-                    <h3 style="margin-bottom:15px;">Leveringsadresse (Teslimat Adresi)</h3>
-                    <div class="form-group">
-                        <label>Fullt Navn (Ad Soyad)</label>
-                        <input type="text" id="custName" placeholder="Ola Nordmann">
-                    </div>
-                    <div class="form-group">
-                        <label>Adresse (Adres)</label>
-                        <input type="text" id="custAddress" placeholder="Storgata 1, 3181 Horten">
-                    </div>
-                    <div class="form-group">
-                        <label>Telefonnummer (Telefon)</label>
-                        <input type="tel" id="custPhone" placeholder="+47 123 45 678">
-                    </div>
-                    <button class="btn-next" onclick="generateVippsOrder()" style="width:100%;">Bekreft og Se Vipps Informasjon (Onayla ve İlerle)</button>
-                </div>
-
-                <div id="step-vipps" class="order-step">
-                    <h3 style="color: #28a745; margin-bottom:15px;">Siste Steg: Betaling med Vipps</h3>
-                    <p>Din ordre er klar! For å fullføre bestillingen, vennligst overfør beløpet via Vipps:</p>
-                    
-                    <div class="vipps-box">
-                        <p>📱 <strong>Vipps-nummer:</strong> 123456 (NORUG AS)</p>
-                        <p>💰 <strong>Beløp å betale:</strong> <span id="vippsAmount" style="font-weight:bold; color:#b8926a;"></span></p>
-                        <p>📝 <strong style="color:red;">Viktig melding til Vipps:</strong> <span id="vippsMessage" style="background:#fff; padding:2px 6px; border:1px solid #ccc; font-weight:bold;"></span></p>
-                    </div>
-                    
-                    <p style="margin-top:15px; font-size:0.9rem; color:#666;">✨ Med en gang betalingen er mottatt med denne meldingen, starter vår automatiske frakttjeneste fra Horten!</p>
-                    <button class="btn-next" onclick="resetCart()" style="background-color:#666; margin-top:20px; width:100%;">Start Ny Bestilling (Yeni Sipariş)</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact-section" id="kontakt">
-        <div class="container">
-            <h2 class="section-title">Kontakt Oss</h2>
-            
-            <form class="contact-form" action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST">
-                <div class="form-group">
-                    <label>Navn (İsim)</label>
-                    <input type="text" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label>E-postadresse (E-posta)</label>
-                    <input type="email" name="_replyto" required>
-                </div>
-                <div class="form-group">
-                    <label>Melding (Mesaj)</label>
-                    <textarea name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn-submit btn-next" style="width:100%;">Send Melding</button>
-            </form>
-        </div>
-    </section>
-
-    <script>
-        // Global Durum Değişkenleri (Sepet Hafızası)
-        let cart = [];
-        let currentProduct = null;
-
-        // 1. MADDE: KATEGORİ FİLTRELEME FONKSİYONU
-        function filterCategory(category) {
-            // Aktif buton görselini güncelle
-            const buttons = document.querySelectorAll('.tab-btn');
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Kartları filtrele
-            const cards = document.querySelectorAll('.product-card');
-            cards.forEach(card => {
-                if (category === 'alle' || card.getAttribute('data-category') === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // 2. MADDE: BAŞLIKLI MODAL AÇMA FONKSİYONU
-        function openModal(card) {
-            currentProduct = {
-                title: card.getAttribute('data-title'),
-                price: parseInt(card.getAttribute('data-price')),
-                img: card.getAttribute('data-img')
-            };
-
-            document.getElementById('modalTitle').innerText = currentProduct.title;
-            document.getElementById('modalPrice').innerText = currentProduct.price.toLocaleString('no-NO') + " kr";
-            document.getElementById('modalImg').src = currentProduct.img;
-            document.getElementById('modalVideo').innerText = card.getAttribute('data-video');
-            
-            // Başlıklı teknik detayları basıyoruz
-            document.getElementById('specMat').innerText = card.getAttribute('data-mat');
-            document.getElementById('specSize').innerText = card.getAttribute('data-size');
-            document.getElementById('specOrigin').innerText = card.getAttribute('data-origin');
-
-            // Sepete ekle butonuna işlev atama
-            document.getElementById('modalAddToCartBtn').onclick = function() {
-                addToCart(currentProduct);
-                closeModal();
-            };
-
-            document.getElementById('productModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('productModal').style.display = 'none';
-        }
-
-        // 3. MADDE: DİNAMİK SEPETE EKLEME VE GÜNCELLEME
-        function addToCart(product) {
-            cart.push(product);
-            updateCartUI();
-            // Kullanıcıyı direkt sepet adımına yönlendirip dikkati oraya çekiyoruz
-            scrollToSection('bestilling');
-        }
-
-        function updateCartUI() {
-            // İkon üzerindeki sayıyı güncelle
-            document.getElementById('cartBadge').innerText = cart.length;
-
-            const container = document.getElementById('cartItemsContainer');
-            const totalArea = document.getElementById('cartTotalArea');
-            const nextBtn = document.getElementById('goToAddressBtn');
-
-            if (cart.length === 0) {
-                container.innerHTML = "<p style='color:#999; text-align:center;'>Kurven er tom (Sepetiniz boş).</p>";
-                totalArea.innerText = "Totalt: 0 kr";
-                nextBtn.style.display = 'none';
-                return;
-            }
-
-            // Sepet dolduğunda listeleme yap
-            container.innerHTML = "";
-            let total = 0;
-            cart.forEach((item, index) => {
-                total += item.price;
-                container.innerHTML += `
-                    <div class="cart-item">
-                        <div>
-                            <strong>${item.title}</strong><br>
-                            <span style="color:#b8926a;">${item.price.toLocaleString('no-NO')} kr</span>
-                        </div>
-                        <button onclick="removeFromCart(${index})" style="background:none; border:none; color:red; cursor:pointer;">Fjern (Sil)</button>
-                    </div>
-                `;
-            });
-
-            totalArea.innerText = "Totalt: " + total.toLocaleString('no-NO') + " kr";
-            nextBtn.style.display = 'block';
-        }
-
-        function removeFromCart(index) {
-            cart.splice(index, 1);
-            updateCartUI();
-        }
-
-        // 5 & 7. MADDE: ADIM ADIM İLERLEME SİSTEMİ
-        function nextStep(stepNumber) {
-            document.querySelectorAll('.order-step').forEach(step => step.classList.remove('active'));
-            
-            if (stepNumber === 1) document.getElementById('step-cart').classList.add('active');
-            if (stepNumber === 2) document.getElementById('step-address').classList.add('active');
-            if (stepNumber === 3) document.getElementById('step-vipps').classList.add('active');
-        }
-
-        // 7. MADDE: VIPPS AÇIKLAMA MESAJI VE KODUNU OTOMATİK ÜRETEN ALGORİTMA
-        function generateVippsOrder() {
-            const name = document.getElementById('custName').value.trim();
-            const address = document.getElementById('custAddress').value.trim();
-            const phone = document.getElementById('custPhone').value.trim();
-
-            if (!name || !address || !phone) {
-                alert("Vennligst fyll ut alle feltene! (Lütfen tüm alanları doldurun!)");
-                return;
-            }
-
-            // Toplam tutarı hesapla
-            let total = cart.reduce((sum, item) => sum + item.price, 0);
-            
-            // Rastgele benzersiz bir sipariş numarası üret (Örn: NOR-8372)
-            const orderId = "NOR-" + Math.floor(1000 + Math.random() * 9000);
-
-            // Vipps ekranını doldur
-            document.getElementById('vippsAmount').innerText = total.toLocaleString('no-NO') + " kr";
-            // Müşterinin açıklamaya yazacağı sihirli kod: Sipariş Kodu + Müşteri İsmi
-            document.getElementById('vippsMessage').innerText = `${orderId} - ${name}`;
-
-            nextStep(3);
-        }
-
-        function resetCart() {
-            cart = [];
-            updateCartUI();
-            document.getElementById('custName').value = "";
-            document.getElementById('custAddress').value = "";
-            document.getElementById('custPhone').value = "";
-            nextStep(1);
-        }
-
-        // Kolay kaydırma fonksiyonu
-        function scrollToSection(id) {
-            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-        }
-
-        // Modal dışına tıklayınca kapanma
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('productModal')) {
-                closeModal();
-            }
-        }
-    </script>
-</body>
-</html>
+            font-size: 0.8rem; text-align: center; padding: 10px;
+            letter-spacing:
