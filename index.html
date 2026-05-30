@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* OVERUG.CO STİLİ: MİNİMALİST, MODERN VE LÜKS TASARIM AYARLARI */
+        /* OVERUG.CO STİLİ: MİNİMALİST VE LÜKS TASARIM AYARLARI */
         * {
             margin: 0;
             padding: 0;
@@ -47,7 +47,7 @@
             align-items: center;
         }
         .logo-area img {
-            height: 40px; /* DÜZENLENEBİLİR ALAN: Logo yüksekliği */
+            height: 40px; 
             width: auto;
             display: block;
         }
@@ -67,7 +67,7 @@
             opacity: 0.6;
         }
         
-        /* 4. MADDE: SAĞ ÜST İKONLAR (ARAMA, FAVORİ, SEPET) */
+        /* SAĞ ÜST İKONLAR */
         .header-utilities {
             display: flex;
             align-items: center;
@@ -84,12 +84,12 @@
             border-radius: 20px;
             font-size: 0.85rem;
             outline: none;
-            width: 180px;
+            width: 160px;
             transition: all 0.3s;
         }
         .search-input:focus {
             border-color: #111;
-            width: 220px;
+            width: 200px;
         }
         .search-container i {
             position: absolute;
@@ -144,27 +144,7 @@
             font-weight: 300;
         }
 
-        /* HAKKIMIZDA (OM OSS) */
-        .about-section {
-            padding: 60px 0;
-            text-align: center;
-            background-color: #fbfbfb;
-            border-bottom: 1px solid #e5e5e5;
-        }
-        .about-section h2 {
-            font-size: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-        }
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            color: #555;
-            font-size: 0.95rem;
-        }
-
-        /* 1 & 2. MADDE: ÜRÜNLER & KATEGORİLER (Baskı halı yok) */
+        /* ÜRÜNLER & KATEGORİLER */
         .main-content {
             padding: 60px 0;
         }
@@ -175,6 +155,8 @@
             margin-bottom: 40px;
             border-bottom: 1px solid #e5e5e5;
             padding-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
         .section-header h2 {
             font-size: 1.5rem;
@@ -183,12 +165,13 @@
         }
         .category-tabs {
             display: flex;
-            gap: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
         }
         .tab-btn {
             background: none;
             border: 1px solid #e5e5e5;
-            padding: 8px 18px;
+            padding: 8px 16px;
             font-weight: 500;
             font-size: 0.8rem;
             text-transform: uppercase;
@@ -201,10 +184,11 @@
             border-color: #111111;
         }
 
-        /* ÜRÜN KARTLARI GRİD YAPISI (OVERUG TARZI) */
+        /* ÜRÜN KARTLARI GRİD YAPISI */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* 3. MADDE: auto-fill kullanılarak tek ürün kaldığında yana doğru devasa esnemesi tamamen engellendi */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 40px;
         }
         .product-card {
@@ -226,7 +210,6 @@
         .product-card:hover .product-image {
             transform: scale(1.04);
         }
-        /* Favori Kalp İkonu (Kart Üstünde) */
         .favorite-heart-btn {
             position: absolute;
             top: 15px;
@@ -267,6 +250,14 @@
             font-size: 0.95rem;
             font-weight: 500;
             color: #444;
+        }
+
+        /* ÖZEL KONSEPT KART STİLİ (Eget Design İçin Özel Görünüm) */
+        .product-card.custom-design-card {
+            border: 1px dashed #111;
+        }
+        .product-card.custom-design-card .product-info {
+            padding: 15px;
         }
 
         /* DETAYLI ÜRÜN PENCERESİ (MODAL) */
@@ -318,7 +309,6 @@
             flex-direction: column;
             justify-content: space-between;
         }
-        /* 2. MADDE: Başlık Başlık Teknik Açıklama Listesi */
         .specs-list {
             margin: 25px 0;
             list-style: none;
@@ -348,14 +338,12 @@
             opacity: 0.8;
         }
 
-        /* FAVORİLER MODAL PENCERESİ */
+        /* FAVORİLER VE SEPET ALANI */
         #favoritesModal .modal-content {
             grid-template-columns: 1fr;
             padding: 40px;
             max-width: 500px;
         }
-
-        /* SEPET VE SİPARİŞ (BESTILLING) SÜRECİ */
         .checkout-section {
             background-color: #ffffff;
             padding: 60px 0;
@@ -403,7 +391,6 @@
         }
         .form-group input:focus { border-color: #111; }
         
-        /* Vipps Alanı */
         .vipps-box {
             background-color: #fffdf6;
             border: 1px dashed #ffcc00;
@@ -429,7 +416,27 @@
             width: 100%; padding: 12px; border: 1px solid #e5e5e5; outline: none; resize: none;
         }
 
-        /* 5 & 6. MADDE: PREMIUM FOOTER (E-posta ve Sosyal Medya) */
+        /* 1. MADDE: EN ALTA TAŞINAN HAKKIMIZDA (OM OSS) ALANI */
+        .about-section {
+            padding: 60px 0;
+            text-align: center;
+            background-color: #ffffff;
+            border-top: 1px solid #e5e5e5;
+        }
+        .about-section h2 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 0.95rem;
+        }
+
+        /* PREMIUM FOOTER */
         footer {
             background-color: #111111;
             color: #ffffff;
@@ -472,10 +479,9 @@
                 <img src="logo.png" alt="NORUG Logo">
             </div>
             <nav>
-                <a href="#om-oss">Om Oss</a>
                 <a href="#tepper">Tepper</a>
-                <a href="#bestilling">Bestilling</a>
                 <a href="#kontakt">Kontakt</a>
+                <a href="#om-oss">Om Oss</a>
             </nav>
             
             <div class="header-utilities">
@@ -502,15 +508,6 @@
         </div>
     </section>
 
-    <section class="about-section" id="om-oss">
-        <div class="container">
-            <h2>Om Oss</h2>
-            <div class="about-content">
-                <p>Velkommen til NORUG. Vi tilbyr unike, håndlagde tepper av høyeste kvalitet, nøye utvalgt for det moderne hjemmet. Basert i Horten, Norge, bringer vi tradisjonelt håndverk og tidløs design sammen.</p>
-            </div>
-        </div>
-    </section>
-
     <main class="container main-content" id="tepper">
         <div class="section-header">
             <h2>Våre Tepper</h2>
@@ -518,6 +515,8 @@
                 <button class="tab-btn active" onclick="filterCategory('alle')">Alle Tepper</button>
                 <button class="tab-btn" onclick="filterCategory('Geometrisk')">Geometrisk</button>
                 <button class="tab-btn" onclick="filterCategory('Modern')">Modern</button>
+                <button class="tab-btn" onclick="filterCategory('Veggtepper')">Veggtepper</button>
+                <button class="tab-btn" onclick="filterCategory('Eget Design')">Eget Design</button>
             </div>
         </div>
         
@@ -529,19 +528,11 @@
                  data-img="https://images.unsplash.com/photo-1576016770956-debb63d900ee?q=80&w=500"
                  data-mat="100% Naturlig Ull"
                  data-size="160x230 cm"
-                 data-origin="Håndlaget i India"
+                 data-origin="Håndlaget Studio"
                  data-video="Video: Produksjonsdetaljer og frynsekvalitet.">
-                
-                <button class="favorite-heart-btn" onclick="toggleFavorite(event, 'Geometrisk Ullteppe')">
-                    <i class="fa-solid fa-heart"></i>
-                </button>
-                <div class="product-image-wrapper">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576016770956-debb63d900ee?q=80&w=500');"></div>
-                </div>
-                <div class="product-info">
-                    <h3>Geometrisk Ullteppe</h3>
-                    <p class="product-price">4 500 kr</p>
-                </div>
+                <button class="favorite-heart-btn" onclick="toggleFavorite(event, 'Geometrisk Ullteppe')"><i class="fa-solid fa-heart"></i></button>
+                <div class="product-image-wrapper"><div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1576016770956-debb63d900ee?q=80&w=500');"></div></div>
+                <div class="product-info"><h3>Geometrisk Ullteppe</h3><p class="product-price">4 500 kr</p></div>
             </div>
 
             <div class="product-card" data-category="Modern" onclick="openProductModal(this)"
@@ -550,18 +541,55 @@
                  data-img="https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=500"
                  data-mat="Premium Lin & Bomull"
                  data-size="200x300 cm"
-                 data-origin="Håndvevd Studio"
+                 data-origin="Håndvevd Galleri"
                  data-video="Video: Se teppets tekstur i dagslys.">
-                
-                <button class="favorite-heart-btn" onclick="toggleFavorite(event, 'Klassisk Modern Linje')">
-                    <i class="fa-solid fa-heart"></i>
-                </button>
-                <div class="product-image-wrapper">
-                    <div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=500');"></div>
-                </div>
+                <button class="favorite-heart-btn" onclick="toggleFavorite(event, 'Klassisk Modern Linje')"><i class="fa-solid fa-heart"></i></button>
+                <div class="product-image-wrapper"><div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1600121848594-d8644e57abab?q=80&w=500');"></div></div>
+                <div class="product-info"><h3>Klassisk Modern Linje</h3><p class="product-price">5 200 kr</p></div>
+            </div>
+
+            <div class="product-card" data-category="Veggtepper" onclick="openProductModal(this)"
+                 data-title="Abstrakt Veggkunst"
+                 data-price="3800"
+                 data-img="https://images.unsplash.com/photo-1543248939-ff40856f65d4?q=80&w=500"
+                 data-mat="Ull & Fineste Silke"
+                 data-size="120x180 cm"
+                 data-origin="Designet for veggoppheng"
+                 data-video="Video: Detaljer om baksmontering for vegg.">
+                <button class="favorite-heart-btn" onclick="toggleFavorite(event, 'Abstrakt Veggkunst')"><i class="fa-solid fa-heart"></i></button>
+                <div class="product-image-wrapper"><div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1543248939-ff40856f65d4?q=80&w=500');"></div></div>
+                <div class="product-info"><h3>Abstrakt Veggkunst</h3><p class="product-price">3 800 kr</p></div>
+            </div>
+
+            <div class="product-card" data-category="Veggtepper" onclick="openProductModal(this)"
+                 data-title="Månefase Nordisk"
+                 data-price="2900"
+                 data-img="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=500"
+                 data-mat="100% Ren Norsk Ull"
+                 data-size="90x140 cm"
+                 data-origin="Håndlaget lokalt kunstverk"
+                 data-video="Video: Teksturanalyse av månefasene.">
+                <button class="favorite-heart-btn" onclick="toggleFavorite(event, 'Månefase Nordisk')"><i class="fa-solid fa-heart"></i></button>
+                <div class="product-image-wrapper"><div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=500');"></div></div>
+                <div class="product-info"><h3>Månefase Nordisk</h3><p class="product-price">2 900 kr</p></div>
+            </div>
+
+            <div class="product-card custom-design-card" data-category="Eget Design" onclick="openProductModal(this)"
+                 data-title="Skreddersydd Teppe (Ditt Design)"
+                 data-price="Fra 5000"
+                 data-img="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500"
+                 data-mat="Valgfritt (Ull, Akryl, Lin)"
+                 data-size="Tilpasset etter ønske"
+                 data-origin="Produsert unikt for deg / din bedrift"
+                 data-video="Video: Eksempler på firmalogoer og spesialfigurer vi har laget.">
+                <button class="favorite-heart-btn" onclick="toggleFavorite(event, 'Skreddersydd Teppe')"><i class="fa-solid fa-heart"></i></button>
+                <div class="product-image-wrapper"><div class="product-image" style="background-image: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=500');"></div></div>
                 <div class="product-info">
-                    <h3>Klassisk Modern Linje</h3>
-                    <p class="product-price">5 200 kr</p>
+                    <div>
+                        <h3>Skreddersydd Teppe</h3>
+                        <p style="font-size:0.75rem; color:#666; margin-top:3px;">Send oss din logo eller unike figur</p>
+                    </div>
+                    <p class="product-price">Fra 5 000 kr</p>
                 </div>
             </div>
 
@@ -571,24 +599,20 @@
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('productModal')">&times;</span>
-            
             <div class="modal-media">
                 <img id="modalImg" src="" class="modal-main-img">
                 <div id="modalVideo" class="video-box">Videoområde</div>
             </div>
-            
             <div class="modal-details">
                 <div>
                     <h2 id="modalTitle"></h2>
                     <p id="modalPrice" style="font-size:1.3rem; font-weight:600; margin-top:10px;"></p>
-                    
                     <ul class="specs-list">
                         <li><strong>Materiale:</strong> <span id="specMat"></span></li>
                         <li><strong>Størrelse:</strong> <span id="specSize"></span></li>
                         <li><strong>Opprinnelse:</strong> <span id="specOrigin"></span></li>
                     </ul>
                 </div>
-                
                 <button class="btn-black" id="modalAddToCartBtn">Legg i handlekurv</button>
             </div>
         </div>
@@ -598,53 +622,38 @@
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('favoritesModal')">&times;</span>
             <h2 style="text-transform: uppercase; font-size: 1.2rem; letter-spacing: 1px; margin-bottom: 20px;">Dine Favoritter</h2>
-            <div id="favItemsContainer">
-                </div>
+            <div id="favItemsContainer"></div>
         </div>
     </div>
 
     <section class="checkout-section" id="bestilling">
         <div class="container">
             <div class="checkout-container">
-                
                 <div id="step-cart" class="order-step active">
                     <h3 style="text-transform:uppercase; font-size:1.1rem; letter-spacing:1px; margin-bottom:20px;">Handlekurv</h3>
                     <div id="cartItemsContainer"></div>
                     <div class="cart-total" id="cartTotalArea">Totalt: 0 kr</div>
-                    <button class="btn-black" id="goToAddressBtn" onclick="nextStep(2)" style="display:none;">Fortsett til levering (Adrese Geç)</button>
+                    <button class="btn-black" id="goToAddressBtn" onclick="nextStep(2)" style="display:none;">Fortsett til levering</button>
                 </div>
 
                 <div id="step-address" class="order-step">
                     <h3 style="text-transform:uppercase; font-size:1.1rem; letter-spacing:1px; margin-bottom:20px;">Leveringsadresse</h3>
-                    <div class="form-group">
-                        <label>Fullt Navn</label>
-                        <input type="text" id="custName" placeholder="Ola Nordmann">
-                    </div>
-                    <div class="form-group">
-                        <label>Adresse</label>
-                        <input type="text" id="custAddress" placeholder="Storgata 1, 3181 Horten">
-                    </div>
-                    <div class="form-group">
-                        <label>Telefonnummer</label>
-                        <input type="tel" id="custPhone" placeholder="+47 123 45 678">
-                    </div>
+                    <div class="form-group"><label>Fullt Navn</label><input type="text" id="custName" placeholder="Ola Nordmann"></div>
+                    <div class="form-group"><label>Adresse</label><input type="text" id="custAddress" placeholder="Storgata 1, 3181 Horten"></div>
+                    <div class="form-group"><label>Telefonnummer</label><input type="tel" id="custPhone" placeholder="+47 123 45 678"></div>
                     <button class="btn-black" onclick="generateVippsOrder()">Bekreft og se Vipps-info</button>
                 </div>
 
                 <div id="step-vipps" class="order-step">
                     <h3 style="color: #28a745; text-transform:uppercase; font-size:1.1rem; letter-spacing:1px; margin-bottom:20px;">Betaling med Vipps</h3>
-                    <p>Vennligst fullfør betalingen ved å bruke detaljene nedenfor:</p>
-                    
                     <div class="vipps-box">
                         <p>📱 <strong>Vipps-nummer:</strong> 123456 (NORUG AS)</p>
                         <p>💰 <strong>Beløp:</strong> <span id="vippsAmount" style="font-weight:bold;"></span></p>
                         <p>📝 <strong style="color:red;">Vipps-melding (Kopier denne):</strong> <span id="vippsMessage" style="background:#eee; padding:3px 8px; font-weight:bold;"></span></p>
                     </div>
-                    
                     <p style="margin-top:20px; font-size:0.85rem; color:#666;">✨ Ordren din prosesseres automatisk så snart betalingen er registrert med denne meldingen.</p>
                     <button class="btn-black" onclick="resetCart()" style="background-color:#555; margin-top:20px;">Start ny handel</button>
                 </div>
-
             </div>
         </div>
     </section>
@@ -652,40 +661,35 @@
     <section class="contact-section" id="kontakt">
         <div class="container">
             <form class="contact-form" action="https://formspree.io/f/YOUR_ENDPOINT_HERE" method="POST">
-                <h3 style="text-transform:uppercase; font-size:1.1rem; letter-spacing:1px; margin-bottom:20px; text-align:center;">Kontakt Oss</h3>
-                <div class="form-group">
-                    <label>Navn</label>
-                    <input type="text" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label>E-postadresse</label>
-                    <input type="email" name="_replyto" required>
-                </div>
-                <div class="form-group">
-                    <label>Melding</label>
-                    <textarea name="message" rows="5" required></textarea>
-                </div>
+                <h3 style="text-transform:uppercase; font-size:1.1rem; letter-spacing:1px; margin-bottom:10px; text-align:center;">Kontakt Oss / Samarbeid</h3>
+                <p style="text-align: center; font-size: 0.85rem; color: #666; margin-bottom: 25px;">Har du spørsmål eller ønsker å bestille et skreddersydd teppe med egen logo/figur? Send oss en melding!</p>
+                <div class="form-group"><label>Navn</label><input type="text" name="name" required></div>
+                <div class="form-group"><label>E-postadresse</label><input type="email" name="_replyto" required></div>
+                <div class="form-group"><label>Melding</label><textarea name="message" rows="5" required placeholder="Beskriv gjerne dine ønsker for teppedesign, størrelse og farger..."></textarea></div>
                 <button type="submit" class="btn-black">Send Melding</button>
             </form>
         </div>
     </section>
 
+    <section class="about-section" id="om-oss">
+        <div class="container">
+            <h2>Om Oss</h2>
+            <div class="about-content">
+                <p>Velkommen til NORUG. Vi tilbyr unike, håndlagde tepper av høyeste kvalitet, nøye utvalgt for det moderne hjemmet. Basert i Horten, Norge, bringer vi tradisjonelt håndverk og tidløs design sammen.</p>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="container">
-            <div class="footer-email">
-                <a href="mailto:norug.no@gmail.com">norug.no@gmail.com</a>
-            </div>
-            
+            <div class="footer-email"><a href="mailto:norug.no@gmail.com">norug.no@gmail.com</a></div>
             <div class="footer-socials">
                 <a href="#" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
                 <a href="#" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
                 <a href="#" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
             </div>
-            
-            <div class="footer-copy">
-                &copy; 2026 NORUG. All Rights Reserved. Premium Handmade Rugs.
-            </div>
+            <div class="footer-copy">&copy; 2026 NORUG. All Rights Reserved. Premium Handmade Rugs.</div>
         </div>
     </footer>
 
@@ -710,7 +714,7 @@
             });
         }
 
-        // 4. MADDE: GELİŞMİŞ CANLI ARAMA SİSTEMİ (SEARCH)
+        // CANLI ARAMA MOTORU
         function handleSearch(query) {
             const cards = document.querySelectorAll('.product-card');
             cards.forEach(card => {
@@ -723,11 +727,10 @@
             });
         }
 
-        // 4. MADDE: FAVORİLERE EKLEME / ÇIKARMA SİSTEMİ (FAVORITES)
+        // FAVORİ MOTORU
         function toggleFavorite(event, title) {
-            event.stopPropagation(); // Karta tıklayıp detay modalını tetiklemesini önler
+            event.stopPropagation(); 
             const btn = event.currentTarget;
-            
             if (favorites.includes(title)) {
                 favorites = favorites.filter(item => item !== title);
                 btn.classList.remove('active');
@@ -738,7 +741,6 @@
             document.getElementById('favBadge').innerText = favorites.length;
         }
 
-        // Favoriler Penceresini Açma
         function openFavoritesModal() {
             const container = document.getElementById('favItemsContainer');
             if(favorites.length === 0) {
@@ -756,28 +758,42 @@
             document.getElementById('favoritesModal').style.display = 'flex';
         }
 
-        // ÜRÜN DETAY PENCERESİNİ AÇMA (BAŞLIKLI METİNLER)
+        // ÜRÜN MODAL MOTORU
         function openProductModal(card) {
             currentProduct = {
                 title: card.getAttribute('data-title'),
-                price: parseInt(card.getAttribute('data-price')),
+                price: card.getAttribute('data-price').startsWith("Fra") ? card.getAttribute('data-price') : parseInt(card.getAttribute('data-price')),
                 img: card.getAttribute('data-img')
             };
 
             document.getElementById('modalTitle').innerText = currentProduct.title;
-            document.getElementById('modalPrice').innerText = currentProduct.price.toLocaleString('no-NO') + " kr";
+            
+            if(typeof currentProduct.price === 'string') {
+                document.getElementById('modalPrice').innerText = currentProduct.price + " kr";
+            } else {
+                document.getElementById('modalPrice').innerText = currentProduct.price.toLocaleString('no-NO') + " kr";
+            }
+            
             document.getElementById('modalImg').src = currentProduct.img;
             document.getElementById('modalVideo').innerText = card.getAttribute('data-video');
-            
-            // Başlıklı teknik özellik atamaları
             document.getElementById('specMat').innerText = card.getAttribute('data-mat');
             document.getElementById('specSize').innerText = card.getAttribute('data-size');
             document.getElementById('specOrigin').innerText = card.getAttribute('data-origin');
 
-            document.getElementById('modalAddToCartBtn').onclick = function() {
-                addToCart(currentProduct);
-                closeModal('productModal');
-            };
+            // Eğer özel sipariş ürününe tıklanırsa sepete eklemek yerine doğrudan kontakt alanına yönlendirebiliriz
+            if(card.getAttribute('data-category') === 'Eget Design') {
+                document.getElementById('modalAddToCartBtn').innerText = "Kontakt oss for design";
+                document.getElementById('modalAddToCartBtn').onclick = function() {
+                    closeModal('productModal');
+                    scrollToSection('kontakt');
+                };
+            } else {
+                document.getElementById('modalAddToCartBtn').innerText = "Legg i handlekurv";
+                document.getElementById('modalAddToCartBtn').onclick = function() {
+                    addToCart(currentProduct);
+                    closeModal('productModal');
+                };
+            }
 
             document.getElementById('productModal').style.display = 'flex';
         }
@@ -786,11 +802,12 @@
             document.getElementById(modalId).style.display = 'none';
         }
 
-        // SEPET İŞLEMLERİ
+        // 2. MADDE: SEPETE EKLEME VE ONAY MEKANİZMASI
         function addToCart(product) {
             cart.push(product);
             updateCartUI();
-            scrollToSection('bestilling');
+            // Eklendi uyarısı verip ekranı kaydırmadan kapatıyoruz, müşteri ürünü görmeye devam ediyor
+            alert("Produktet " + product.title + " er lagt til i handlekurven!");
         }
 
         function updateCartUI() {
@@ -809,12 +826,13 @@
             container.innerHTML = "";
             let total = 0;
             cart.forEach((item, index) => {
-                total += item.price;
+                let itemPrice = typeof item.price === 'string' ? 5000 : item.price; // Custom tabanlı fiyat kontrolü
+                total += itemPrice;
                 container.innerHTML += `
                     <div class="cart-item">
                         <div>
                             <strong style="font-size:0.9rem;">${item.title}</strong><br>
-                            <span style="font-size:0.85rem; color:#666;">${item.price.toLocaleString('no-NO')} kr</span>
+                            <span style="font-size:0.85rem; color:#666;">${itemPrice.toLocaleString('no-NO')} kr</span>
                         </div>
                         <button onclick="removeFromCart(${index})" style="background:none; border:none; color:#eb4d4b; cursor:pointer; font-size:0.8rem; text-transform:uppercase;">Fjern</button>
                     </div>
@@ -830,7 +848,7 @@
             updateCartUI();
         }
 
-        // ADIM ADIM İLERLEME MOTORU
+        // ADIM MOTORU
         function nextStep(stepNumber) {
             document.querySelectorAll('.order-step').forEach(step => step.classList.remove('active'));
             if (stepNumber === 1) document.getElementById('step-cart').classList.add('active');
@@ -838,7 +856,7 @@
             if (stepNumber === 3) document.getElementById('step-vipps').classList.add('active');
         }
 
-        // OTOMATIK VIPPS KOD ALGORİTMASI
+        // VIPPS SİPARİŞ KODU MOTORU
         function generateVippsOrder() {
             const name = document.getElementById('custName').value.trim();
             const address = document.getElementById('custAddress').value.trim();
@@ -849,7 +867,11 @@
                 return;
             }
 
-            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            let total = cart.reduce((sum, item) => {
+                let itemPrice = typeof item.price === 'string' ? 5000 : item.price;
+                return sum + itemPrice;
+            }, 0);
+            
             const orderId = "NRG-" + Math.floor(1000 + Math.random() * 9000);
 
             document.getElementById('vippsAmount').innerText = total.toLocaleString('no-NO') + " kr";
@@ -871,7 +893,6 @@
             document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Modalların dışına tıklayınca otomatik kapanması
         window.onclick = function(event) {
             if (event.target.classList.contains('modal')) {
                 event.target.style.display = 'none';
