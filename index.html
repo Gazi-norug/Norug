@@ -2,34 +2,199 @@
 <html lang="no">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NoRug | Håndlaget Tufting</title>
     <style>
-        body, html { margin: 0; height: 100%; font-family: 'Helvetica Neue', sans-serif; }
+        /* GENEL AYARLAR */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background-color: #fcfcfc; color: #333; line-height: 1.6; }
         
+        /* NAVİGASYON (MENÜ) */
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: white; border-bottom: 1px solid #eee; sticky; top: 0; z-index: 100; }
+        .logo-text { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
+        nav a { margin-left: 20px; text-decoration: none; color: #555; font-size: 0.95rem; font-weight: 500; cursor: pointer; transition: color 0.3s; }
+        nav a:hover { color: #000; }
+
+        /* HERO (GİRİŞ KAPAĞI) */
         .hero-bg {
-            height: 100vh;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            /* Burada görselini çağırıyoruz */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('atolye.jpg');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('atolye.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
+            padding: 0 20px;
         }
+        .hero-bg h1 { font-size: 3rem; font-weight: 300; margin-bottom: 10px; letter-spacing: 1px; }
+        .hero-bg p { font-size: 1.2rem; color: #f1f1f1; font-weight: 300; }
 
-        .logo { width: 300px; margin-bottom: 20px; }
-        h1 { font-size: 2.5em; font-weight: 300; margin-bottom: 10px; }
-        p { font-size: 1.2em; color: #f1f1f1; }
+        /* KATEGORİ FİLTRELERİ */
+        .categories { display: flex; justify-content: center; gap: 15px; padding: 40px 20px 20px; }
+        .cat-btn { padding: 8px 20px; border: 1px solid #ddd; background: white; border-radius: 20px; cursor: pointer; font-size: 0.9rem; transition: all 0.3s; }
+        .cat-btn.active, .cat-btn:hover { background: #333; color: white; border-color: #333; }
+
+        /* ÜRÜN GALERİSİ (GRID) */
+        .products-section { padding: 0 5% 60px; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+        
+        .product-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.02); cursor: pointer; transition: transform 0.3s; position: relative; }
+        .product-card:hover { transform: translateY(-5px); }
+        
+        /* Üzerine gelince resim değişme efekti */
+        .image-container { position: relative; width: 100%; pt: 100%; padding-top: 100%; overflow: hidden; background-color: #f0f0f0; }
+        .image-container img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; }
+        .image-container .img-hover { opacity: 0; }
+        .product-card:hover .img-hover { opacity: 1; }
+
+        .product-info { padding: 15px; text-align: center; }
+        .product-title { font-size: 1.1rem; font-weight: 600; margin-bottom: 5px; color: #222; }
+        .product-price { color: #666; font-size: 1rem; font-weight: bold; }
+
+        /* DETAY PENCERESİ (MODAL) */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center; padding: 20px; }
+        .modal-content { background: white; width: 100%; max-width: 800px; border-radius: 12px; overflow: hidden; display: flex; flex-direction: row; position: relative; max-height: 90vh; }
+        .modal-close { position: absolute; top: 15px; right: 20px; font-size: 2rem; cursor: pointer; color: #333; z-index: 10; }
+        
+        .modal-left { flex: 1; background: #f9f9f9; display: flex; align-items: center; justify-content: center; }
+        .modal-left img { width: 100%; height: 100%; object-fit: cover; max-height: 60vh; }
+        
+        .modal-right { flex: 1; padding: 40px 30px; display: flex; flex-direction: column; justify-content: center; }
+        .modal-right h2 { font-size: 1.8rem; margin-bottom: 15px; }
+        .modal-right .modal-meta { color: #777; font-size: 0.95rem; margin-bottom: 20px; }
+        .modal-right .modal-description { font-size: 1rem; color: #555; margin-bottom: 25px; }
+        .modal-right .modal-price { font-size: 1.4rem; font-weight: bold; margin-bottom: 30px; color: #000; }
+        
+        .vipps-btn { display: inline-flex; align-items: center; justify-content: center; background-color: #25D366; color: white; text-decoration: none; padding: 12px 25px; border-radius: 30px; font-weight: bold; transition: background 0.3s; text-align: center; }
+        .vipps-btn:hover { background-color: #128C7E; }
+
+        /* FOOTER (ALT BİLGİ) */
+        footer { background: #333; color: white; text-align: center; padding: 30px; font-size: 0.9rem; font-weight: 300; }
+
+        /* MOBİL UYUMLULUK */
+        @media (max-width: 768px) {
+            .modal-content { flex-direction: column; max-height: 95vh; overflow-y: auto; }
+            .modal-right { padding: 20px; }
+            .hero-bg h1 { font-size: 2rem; }
+        }
     </style>
 </head>
 <body>
+
+    <header>
+        <div class="logo-text">NORUG</div>
+        <nav>
+            <a href="#">Hjem</a>
+            <a href="#produkter">Tepper</a>
+            <a href="https://wa.me/47XXXXXXXX" target="_blank">Kontakt</a> </nav>
+    </header>
+
     <div class="hero-bg">
-        <img src="logo.png" alt="NoRug Logo" class="logo">
         <h1>Håndlaget tufting i Horten</h1>
-        <p>Nettsiden vår er under konstruksjon. Vi gleder oss til å vise frem våre unike tepper.</p>
+        <p>Unike, håndlagde tepper designet og laget med lidenskap.</p>
     </div>
+
+    <div class="categories">
+        <button class="cat-btn active" onclick="filterCategory('alle')">Alle Tepper</button>
+        <button class="cat-btn" onclick="filterCategory('geometrisk')">Geometrisk</button>
+        <button class="cat-btn" onclick="filterCategory('figurer')">Figurer</button>
+    </div>
+
+    <section class="products-section" id="produkter">
+        <div class="products-grid">
+            
+            <div class="product-card" data-category="geometrisk" onclick="openModal('Nordic Lines', '120x180 cm', '100% Ren Ull', 'Maksimal komfort med minimalistisk mønster. Perfekt for stuen.', '3499 kr', 'logo.png')">
+                <div class="image-container">
+                    <img src="logo.png" alt="Nordic Lines Ana Görsel" class="img-main">
+                    <img src="atolye.jpg" alt="Nordic Lines Detay Görsel" class="img-hover">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Nordic Lines</div>
+                    <div class="product-price">3499 kr</div>
+                </div>
+            </div>
+
+            <div class="product-card" data-category="figurer" onclick="openModal('Ocean Wave', '90x90 cm', 'Akryl & Ull miks', 'Håndlaget teppe inspirert av havets bølger.', '1999 kr', 'atolye.jpg')">
+                <div class="image-container">
+                    <img src="atolye.jpg" alt="Ocean Wave Ana Görsel" class="img-main">
+                    <img src="logo.png" alt="Ocean Wave Detay Görsel" class="img-hover">
+                </div>
+                <div class="product-info">
+                    <div class="product-title">Ocean Wave</div>
+                    <div class="product-price">1999 kr</div>
+                </div>
+            </div>
+
+            </div>
+    </section>
+
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <div class="modal-left">
+                <img id="modalImg" src="" alt="Produktbilde">
+            </div>
+            <div class="modal-right">
+                <h2 id="modalTitle">Produktnavn</h2>
+                <div class="modal-meta" id="modalMeta">Størrelse: - | Materiale: -</div>
+                <p class="modal-description" id="modalDesc">Beskrivelse her...</p>
+                <div class="modal-price" id="modalPrice">0 kr</div>
+                <a href="#" id="whatsappLink" target="_blank" class="vipps-btn">Bestill via WhatsApp / Vipps</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 NORUG. Laget i Horten, Norge.</p>
+    </footer>
+
+    <script>
+        // Kategori Filtreleme Fonksiyonu
+        function filterCategory(category) {
+            // Aktif buton rengini değiştir
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const cards = document.querySelectorAll('.product-card');
+            cards.forEach(card => {
+                if (category === 'alle' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Detay Penceresini Açma Fonksiyonu
+        function openModal(title, size, material, desc, price, imgUrl) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMeta').innerText = `Størrelse: ${size} | Materiale: ${material}`;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalImg').src = imgUrl;
+
+            // WhatsApp Mesaj Linkini Dinamik Oluşturma (+47 numaranızı yazın)
+            const telefon No = "+4790887083"; // Kendi Norveç numaranızı buraya yazın (Örn: 4791234567)
+            const mesaj = encodeURIComponent(`Hei NORUG! Jeg vil gjerne bestille "${title}" (${price}) via Vipps.`);
+            document.getElementById('whatsappLink').href = `https://wa.me/${telefonNo}?text=${mesaj}`;
+
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        // Detay Penceresini Kapatma Fonksiyonu
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        // Dışarı tıklayınca modalı kapat
+        window.onclick = function(event) {
+            const modal = document.getElementById('productModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
